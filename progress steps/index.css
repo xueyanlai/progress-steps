@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  /* 
+  1. :root： 伪类选择器 文档根元素（css全局变量）
+    1. 命名规则：以--开头，后面跟变量
+    2. 使用： var（--line-border-fill)
+  
+  */
+  --line-border-fill: #3498db;
+  --line-border-empty: #e0e0e0;
+}
+
+body {
+background-color: pink;
+ font-family: 'Muli', sans-serif;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
+ overflow: hidden;
+ margin: 0;
+}
+
+.container {
+  text-align: center;
+}
+
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+  margin-bottom: 30px;
+  /* max-width: 最大宽度不能超过容器的宽度 */
+  max-width: 100%;
+  position: relative;
+  
+}
+.progress-container::before {
+  content: '';
+  background-color: var(--line-border-empty);
+  position: absolute; 
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%;
+  z-index:-1;
+}
+
+.progress {
+  background-color: var(--line-border-fill);
+  height: 4px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY((-50%));
+  width: 0%;
+  z-index: -1;
+  transition: 0.4s ease;
+  
+}
+.circle {
+  background-color: #fff;
+  color: #999;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid var(--line-border-empty);
+  transition: 0.4s ease;
+}
+
+.circle.active {
+  border-color: var(--line-border-fill);
+}
+
+.btn {
+  background-color: var(--line-border-fill);
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  /* inherit:继承父元素的字体样式。 */
+  font-family: inherit;
+  padding: 8px 30px;
+  margin: 5px;
+  font-size: 14px;
+}
+
+.btn:active {
+  transform: scale(0.98)
+}
+
+.btn:focus {
+  outline: 0;
+}
+
+.btn:disabled {
+  background-color:  var(--line-border-empty);
+  cursor: not-allowed;
+}
